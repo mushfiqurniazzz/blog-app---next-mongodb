@@ -36,7 +36,7 @@ export const POST = async (req) => {
     });
 
     return new Response(JSON.stringify({ msg: "New Blog Added." }), {
-      status: 200,
+      status: 201,
     });
   } catch (error) {
     console.error(error);
