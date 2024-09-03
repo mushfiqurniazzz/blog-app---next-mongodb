@@ -1,10 +1,16 @@
 import DBConn from "../../../../../lib/DBConn";
 import { Blog } from "../../../../../models/BlogModel";
 
-export const GET = async (req,{ params }) => {
-  const {id} = params;
+export const GET = async (req, { params }) => {
+  if (req.method !== "GET") {
+    return new Response(JSON.stringify({ msg: "Method Not Allowed." }), {
+      status: 405,
+    });
+  }
 
-  if (!id || id.trim() === "") {
+  const { id } = params;
+
+  if (!id || id === "") {
     return new Response(JSON.stringify({ msg: "Provide The Post Id." }), {
       status: 400,
     });
