@@ -1,7 +1,12 @@
 import DBConn from "../../../../lib/DBConn";
 import { Blog } from "../../../../models/BlogModel";
 
-export const GET = async () => {
+export const GET = async (req) => {
+  if (req.method !== "GET") {
+    return new Response(JSON.stringify({ msg: "Method Not Allowed." }), {
+      status: 405,
+    });
+  }
   try {
     await DBConn();
 
