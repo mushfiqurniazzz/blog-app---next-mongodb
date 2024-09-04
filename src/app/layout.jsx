@@ -3,6 +3,7 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Provider from "@/components/Provider";
+import { Toaster } from "sonner";
 
 const roboto = Roboto({ subsets: ["latin"], weight: "300" });
 
@@ -23,6 +24,12 @@ export default function RootLayout({ children }) {
       <Provider>
         <body className={roboto.className}>
           <NavBar />
+          <Toaster
+            duration={2000}
+            position="top-center"
+            richColors
+            closeButton
+          />
           {children}
           <Footer />
         </body>
